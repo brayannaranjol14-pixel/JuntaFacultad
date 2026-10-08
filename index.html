@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indicadores de Fin de Periodo · Medicina Veterinaria — UNIANDES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+
+
+
+
+:root{
+  --uni-600:#1565C0;--uni-500:#1976D2;--uni-400:#42A5F5;--uni-300:#90CAF9;--uni-200:#BBDEFB;--uni-100:#E3F2FD;
+  --gold:#F9A825;--gold-l:#FFD54F;--emerald:#00C9A7;--rose:#FF6B8A;
+  --bg-deep:#04142B;--glass:rgba(255,255,255,0.06);--glass-2:rgba(255,255,255,0.04);
+  --gb:rgba(255,255,255,0.12);--gbh:rgba(255,255,255,0.22);
+  --tp:#F0F6FF;--ts:#A8C4E0;--tm:#6B8DB5;
+  --rlg:20px;--rmd:14px;--rsm:10px;
+  --sh:0 8px 32px rgba(0,0,0,0.35),0 2px 8px rgba(0,0,0,0.2);--glow:0 0 60px rgba(21,101,192,0.25);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;font-family:'Inter','Outfit',system-ui,sans-serif;color:var(--tp);background:var(--bg-deep);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 900px 600px at 8% 0%,rgba(21,101,192,0.35),transparent),radial-gradient(ellipse 700px 500px at 95% 5%,rgba(9,51,117,0.4),transparent),radial-gradient(ellipse 800px 700px at 50% 100%,rgba(0,201,167,0.08),transparent)}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 30%,black 20%,transparent 70%)}
+.shell{position:relative;z-index:1;width:min(1280px,calc(100% - 48px));margin:0 auto;padding:28px 0 40px}
+.hero{position:relative;overflow:hidden;border:1px solid var(--gb);border-radius:28px;background:linear-gradient(135deg,rgba(13,71,161,0.35),rgba(6,35,80,0.5));box-shadow:var(--sh),var(--glow);backdrop-filter:blur(28px)}
+.hero-bar{display:flex;align-items:center;gap:16px;padding:18px 32px;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.12)}
+.hero-logo{width:52px;height:52px;border-radius:13px;object-fit:cover;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15)}
+.hero-brand-main{font-family:'Outfit';font-size:15px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase}
+.hero-brand-sub{font-size:12px;color:var(--ts);margin-top:2px}
+.hero-bar-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);box-shadow:0 0 12px rgba(0,201,167,0.7);animation:pulse 2s infinite}
+.live-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--emerald)}
+.hero-body{padding:26px 32px 28px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--uni-300);font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px}
+.eyebrow-icon{width:18px;height:18px;border-radius:6px;background:linear-gradient(135deg,var(--uni-400),var(--emerald));display:flex;align-items:center;justify-content:center;font-size:10px}
+h1{font-family:'Outfit';font-size:clamp(28px,3.6vw,46px);font-weight:900;line-height:1;letter-spacing:-0.04em;background:linear-gradient(135deg,#fff 0%,var(--uni-200) 60%,var(--emerald) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{margin-top:12px;color:var(--ts);font-size:14px;line-height:1.6;max-width:720px}
+.hero-date{margin-top:10px;color:var(--tm);font-size:12.5px;font-weight:600}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 8px;position:sticky;top:10px;z-index:20;padding:10px;background:rgba(6,21,45,0.7);backdrop-filter:blur(16px);border:1px solid var(--gb);border-radius:var(--rlg)}
+.nav-btn{flex:1;min-width:150px;border:1px solid var(--gb);background:var(--glass-2);color:var(--ts);border-radius:12px;padding:11px 12px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;display:flex;align-items:center;gap:8px;justify-content:center}
+.nav-btn .n{width:22px;height:22px;border-radius:6px;background:rgba(21,101,192,0.2);border:1px solid rgba(66,165,245,0.3);display:flex;align-items:center;justify-content:center;font-family:'Outfit';font-weight:800;font-size:11px;color:var(--uni-300);flex-shrink:0}
+.nav-btn:hover{border-color:var(--gbh);color:var(--tp);background:var(--glass)}
+.nav-btn.on{background:linear-gradient(135deg,var(--uni-600),var(--uni-500));color:#fff;border-color:var(--uni-400);box-shadow:0 4px 16px rgba(21,101,192,0.3)}
+.nav-btn.on .n{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.3)}
+.slide{display:none;animation:fade 0.4s ease}
+.slide.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.slide-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:26px 0 18px}
+.slide-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--uni-600),var(--uni-500));color:#fff;font-family:'Outfit';font-weight:900;font-size:15px;box-shadow:0 4px 14px rgba(21,101,192,0.3);flex-shrink:0}
+.slide-title{font-family:'Outfit';font-size:23px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:14px}
+.slide-note{margin-top:6px;color:var(--ts);font-size:14px;max-width:640px;padding-left:48px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.wide-side{grid-template-columns:1.5fr 1fr}
+.card,.panel{border:1px solid var(--gb);border-radius:var(--rlg);background:linear-gradient(145deg,var(--glass),var(--glass-2));box-shadow:var(--sh);backdrop-filter:blur(18px);transition:all 0.3s}
+.card:hover,.panel:hover{border-color:var(--gbh);transform:translateY(-2px)}
+.panel{padding:22px 24px}
+.panel-title{font-family:'Outfit';font-size:16px;font-weight:800;display:flex;align-items:center;gap:10px}
+.panel-sub{margin-top:3px;color:var(--ts);font-size:13px;margin-bottom:16px}
+.tag{border:1px solid rgba(21,101,192,0.25);color:var(--uni-200);background:rgba(21,101,192,0.1);border-radius:999px;padding:6px 12px;font-size:11px;font-weight:700;white-space:nowrap}
+.tag.green{border-color:rgba(0,201,167,0.3);color:#A7F3D0;background:rgba(0,201,167,0.08)}
+.tag.gold{border-color:rgba(249,168,37,0.3);color:#FDE68A;background:rgba(249,168,37,0.08)}
+.kpi{position:relative;overflow:hidden;padding:18px;min-height:118px;border:1px solid var(--gb);border-radius:var(--rlg);background:linear-gradient(145deg,var(--glass),var(--glass-2));box-shadow:var(--sh)}
+.kpi::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0%,rgba(21,101,192,0.1),transparent 50%)}
+.kpi.hl{border-color:rgba(21,101,192,0.4);background:linear-gradient(145deg,rgba(21,101,192,0.18),rgba(0,201,167,0.06))}
+.kpi.hl::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--uni-500),var(--emerald))}
+.kpi.risk{border-color:rgba(255,107,138,0.3)}
+.kpi.risk::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--gold))}
+.k-ic{position:relative;z-index:1;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px;background:rgba(21,101,192,0.12);border:1px solid rgba(21,101,192,0.2)}
+.k-lbl{position:relative;z-index:1;color:var(--ts);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em}
+.k-val{position:relative;z-index:1;margin-top:7px;font-family:'Outfit';font-size:29px;font-weight:900;letter-spacing:-0.04em}
+.k-sub{position:relative;z-index:1;margin-top:5px;color:var(--tm);font-size:12px;display:flex;align-items:center;gap:5px}
+.trend{font-weight:800;font-size:12px}
+.trend.up{color:#7DD9A8}.trend.down{color:#F4A097}
+.statrow{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-radius:var(--rmd);background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);margin-bottom:10px}
+.statrow:last-child{margin-bottom:0}
+.stat-ico{flex-shrink:0;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px}
+.stat-ico.green{background:rgba(0,201,167,0.12);border:1px solid rgba(0,201,167,0.25)}
+.stat-ico.blue{background:rgba(21,101,192,0.12);border:1px solid rgba(21,101,192,0.25)}
+.stat-ico.gold{background:rgba(249,168,37,0.12);border:1px solid rgba(249,168,37,0.25)}
+.stat-ico.purple{background:rgba(150,100,255,0.12);border:1px solid rgba(150,100,255,0.25)}
+.stat-body{flex:1}
+.stat-t{font-size:15px;font-weight:700;color:var(--tp);margin-bottom:3px}
+.stat-d{font-size:13.5px;color:var(--ts);line-height:1.6}
+.stat-d strong{color:#fff}
+.mejora-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mejora{border:1px solid rgba(0,201,167,0.25);background:rgba(0,201,167,0.05);border-radius:var(--rmd);padding:16px}
+.mejora .an{font-size:13.5px;font-weight:700;color:var(--uni-100);margin-bottom:10px;min-height:34px}
+.mejora .flow{display:flex;align-items:center;gap:8px}
+.mejora .v1{font-family:'Outfit';font-size:20px;font-weight:900;color:var(--tm)}
+.mejora .arr{color:var(--emerald);font-size:16px}
+.mejora .v2{font-family:'Outfit';font-size:24px;font-weight:900;color:var(--emerald)}
+.mejora .delta{margin-left:auto;font-size:12px;font-weight:800;color:#7DD9A8;background:rgba(0,201,167,0.1);padding:3px 8px;border-radius:20px}
+.bar-chart{display:grid;gap:11px}
+.bar-row{display:grid;grid-template-columns:64px 1fr 150px;gap:10px;align-items:center}
+.bar-lbl{color:var(--uni-200);font-size:13.5px;font-weight:700;text-align:right}
+.track{height:20px;border-radius:999px;background:rgba(255,255,255,0.05);overflow:hidden;border:1px solid rgba(255,255,255,0.06)}
+.bar{height:100%;min-width:4px;border-radius:999px;background:linear-gradient(90deg,var(--uni-500),var(--uni-400),var(--emerald));animation:grow 1s cubic-bezier(0.22,1,0.36,1) both}
+.bar.rose{background:linear-gradient(90deg,var(--gold),var(--rose))}
+@keyframes grow{from{transform:scaleX(0);opacity:0.3}to{transform:scaleX(1);opacity:1}}
+.bar-val{color:var(--tp);font-family:'Outfit';font-size:13.5px;font-weight:800;text-align:left}
+.line-wrap{width:100%;height:300px}
+svg{display:block;width:100%;height:100%}
+.axis-text{fill:var(--tm);font-size:12px;font-weight:600}
+.leg{display:flex;gap:18px;justify-content:center;margin-top:8px}
+.leg span{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ts)}
+.leg .dot{width:12px;height:3px;border-radius:2px}
+.tbl{width:100%;border-collapse:separate;border-spacing:0 5px}
+.tbl th{text-align:left;color:var(--tm);font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;padding:0 12px 6px;font-weight:700}
+.tbl td{padding:13px 14px;background:rgba(255,255,255,0.04);border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px}
+.tbl td:first-child{border-left:1px solid rgba(255,255,255,0.06);border-radius:var(--rsm) 0 0 var(--rsm);font-weight:700}
+.tbl td:last-child{border-right:1px solid rgba(255,255,255,0.06);border-radius:0 var(--rsm) var(--rsm) 0}
+.tbl .c{text-align:center}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:800}
+.pill.ok{color:#bbf7d0;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.2)}
+.pill.mid{color:#fde68a;background:rgba(249,168,37,0.1);border:1px solid rgba(249,168,37,0.2)}
+.pill.pend{color:#c4b5fd;background:rgba(150,100,255,0.1);border:1px solid rgba(150,100,255,0.2)}
+.updown{font-weight:800;font-size:11px;margin-left:4px}
+.updown.up{color:#7DD9A8}.updown.down{color:#F4A097}
+.nivel-tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.nivel-tab{border:1px solid rgba(21,101,192,0.3);background:rgba(21,101,192,0.08);color:var(--ts);border-radius:999px;padding:7px 15px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.nivel-tab:hover{border-color:rgba(21,101,192,0.6);color:var(--tp)}
+.nivel-tab.on{border-color:var(--uni-400);background:rgba(21,101,192,0.25);color:var(--tp);box-shadow:0 0 12px rgba(21,101,192,0.2)}
+.asig-grid{display:grid;gap:7px}
+.asig-row{display:grid;grid-template-columns:1fr 200px 64px;gap:12px;align-items:center;padding:12px 16px;border-radius:11px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05)}
+.asig-row.crit{border-color:rgba(255,107,138,0.25);background:rgba(255,107,138,0.05)}
+.asig-row.pend{border-color:rgba(150,100,255,0.2);background:rgba(150,100,255,0.04)}
+.asig-name{font-size:14px;font-weight:600;color:var(--uni-100)}
+.asig-rt{font-size:12.5px;color:var(--ts);text-align:right}
+.asig-rt.pend-txt{color:#c4b5fd;font-style:italic}
+.asig-prom{font-family:'Outfit';font-size:16px;font-weight:900;text-align:right}
+.asig-prom.bad{color:var(--rose)}.asig-prom.warn{color:var(--gold)}.asig-prom.good{color:var(--emerald)}.asig-prom.pend{color:#c4b5fd;font-size:12px}
+.note-box{border-left:3px solid var(--gold);background:rgba(249,168,37,0.06);border-radius:0 var(--rsm) var(--rsm) 0;padding:12px 16px;margin-top:14px;font-size:12.5px;color:#FDE9C2;line-height:1.5}
+.controls{display:flex;align-items:center;justify-content:space-between;margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08)}
+.ctrl-btn{border:1px solid rgba(21,101,192,0.4);background:linear-gradient(135deg,rgba(21,101,192,0.22),rgba(0,201,167,0.1));color:var(--tp);border-radius:999px;padding:11px 22px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;transition:all 0.25s}
+.ctrl-btn:hover:not(:disabled){transform:translateY(-2px);border-color:rgba(21,101,192,0.7)}
+.ctrl-btn:disabled{opacity:0.35;cursor:not-allowed}
+.ctrl-ind{color:var(--tm);font-size:12px;font-weight:600}
+.print-btn{border-color:rgba(249,168,37,0.4);background:rgba(249,168,37,0.1);color:#FDE68A}
+.footer{margin-top:32px;padding:20px 0;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;gap:14px;color:var(--tm);font-size:12px}
+.footer-logo{width:26px;height:26px;border-radius:7px;object-fit:cover;opacity:0.6}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3,.g2,.wide-side,.mejora-grid{grid-template-columns:1fr}.nav{position:static}}
+@media(max-width:640px){.g4{grid-template-columns:1fr}.bar-row{grid-template-columns:50px 1fr 120px}.asig-row{grid-template-columns:1fr 90px}.asig-rt{display:none}}
+@media print{body{background:#04142B!important}body::before,body::after{display:none}.nav,.controls{display:none}.slide{display:block!important;page-break-after:always}}
+
+/* Fondo animado: gradiente en movimiento */
+.bg-gradient{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55;
+  background:radial-gradient(ellipse 700px 500px at 20% 30%,rgba(21,101,192,0.25),transparent 60%),radial-gradient(ellipse 600px 500px at 80% 70%,rgba(0,201,167,0.14),transparent 60%),radial-gradient(ellipse 500px 400px at 60% 20%,rgba(66,165,245,0.12),transparent 60%);
+  animation:bgFloat 22s ease-in-out infinite alternate}
+@keyframes bgFloat{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-3%,2%) scale(1.05)}100%{transform:translate(2%,-2%) scale(1.02)}}
+/* Partículas flotantes */
+.particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(66,165,245,0.5),rgba(66,165,245,0));animation:pFloat linear infinite}
+@keyframes pFloat{0%{transform:translateY(105vh) translateX(0);opacity:0}10%{opacity:0.7}90%{opacity:0.7}100%{transform:translateY(-8vh) translateX(30px);opacity:0}}
+@media(prefers-reduced-motion:reduce){.bg-gradient,.particle{animation:none!important}}
+@media print{.bg-gradient,.particles{display:none}}
+
+
+
+.mini-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.mini-kpi{border:1px solid var(--gb);border-radius:var(--rmd);background:linear-gradient(145deg,var(--glass),var(--glass-2));padding:14px 16px;text-align:center}
+.mini-kpi .v{font-family:'Outfit';font-size:26px;font-weight:900;letter-spacing:-0.03em}
+.mini-kpi .l{color:var(--ts);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px}
+/* Sala tabs */
+.sala-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.sala-tab{border:1px solid rgba(21,101,192,0.3);background:rgba(21,101,192,0.08);color:var(--ts);border-radius:12px;padding:10px 16px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;text-align:left;flex:1;min-width:160px}
+.sala-tab:hover{border-color:rgba(21,101,192,0.6);color:var(--tp)}
+.sala-tab.on{border-color:var(--uni-400);background:rgba(21,101,192,0.22);color:var(--tp);box-shadow:0 0 12px rgba(21,101,192,0.2)}
+.sala-tab .st-name{font-family:'Outfit';font-weight:800;font-size:13.5px}
+.sala-tab .st-sub{font-size:11px;color:var(--tm);margin-top:2px;font-weight:600}
+.tribunal-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-radius:var(--rmd);background:rgba(21,101,192,0.08);border:1px solid rgba(21,101,192,0.2);margin-bottom:14px}
+.tribunal-lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--uni-300)}
+.tribunal-chip{background:rgba(255,255,255,0.06);border:1px solid var(--gb);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--uni-100)}
+.sched{display:grid;gap:6px}
+.sched-row{display:grid;grid-template-columns:110px 90px 1fr;gap:12px;align-items:center;padding:11px 16px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05)}
+.sched-row:hover{background:rgba(21,101,192,0.06)}
+.sched-row.receso{background:rgba(249,168,37,0.06);border-color:rgba(249,168,37,0.18);justify-items:start}
+.sched-h{font-family:'Outfit';font-size:12.5px;font-weight:700;color:var(--uni-200)}
+.sched-g{font-size:12px;font-weight:800;color:var(--emerald)}
+.sched-t{font-size:12.5px;color:var(--ts);line-height:1.4}
+.sched-row.receso .sched-h{color:var(--gold-l)}
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.act-card{border:1px solid var(--gb);border-radius:var(--rmd);background:linear-gradient(145deg,var(--glass),var(--glass-2));padding:18px;transition:all 0.2s}
+.act-card:hover{border-color:var(--gbh);transform:translateY(-2px)}
+.act-ico{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:12px;background:rgba(21,101,192,0.12);border:1px solid rgba(21,101,192,0.2)}
+.act-t{font-size:13.5px;font-weight:700;color:var(--tp);line-height:1.35}
+.progress-ring-wrap{display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap}
+.matri-num{font-family:'Outfit';font-size:80px;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--uni-300),var(--emerald));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@media(max-width:1000px){.mini-kpi-row{grid-template-columns:repeat(2,1fr)}.act-grid{grid-template-columns:1fr}.sched-row{grid-template-columns:100px 1fr}.sched-t{grid-column:1/-1}}
+
+
+/* Cierre de periodo */
+.kpi .k-val.sm{font-size:22px}
+.mejora.flat{border-color:rgba(255,255,255,0.1);background:rgba(255,255,255,0.03)}
+.mejora.flat .v2{color:var(--uni-200)}
+.mejora.flat .delta{color:var(--ts);background:rgba(255,255,255,0.06)}
+.bar.meta-ok{background:linear-gradient(90deg,var(--uni-500),var(--emerald))}
+.meta-line{font-size:12px;color:var(--tm);margin-top:12px;display:flex;align-items:center;gap:8px}
+.meta-line i{display:inline-block;width:18px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--rose))}
+.meta-line i.ok{background:linear-gradient(90deg,var(--uni-500),var(--emerald))}
+.dist{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+.dist .mini-kpi .v{font-size:24px}
+.big-center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 0 16px}
+.big-center .num{font-family:'Outfit';font-size:64px;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--uni-300),var(--emerald));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.big-center .cap{color:var(--ts);font-size:13.5px;font-weight:600;margin-top:8px;line-height:1.5}
+.src{margin-top:10px;color:var(--tm);font-size:11.5px}
+.tbl td.num{font-family:'Outfit';font-weight:800;text-align:center}
+.tbl td.num.no{color:#F4A097}.tbl td.num.si{color:#7DD9A8}
+.tbl tfoot td{background:rgba(21,101,192,0.12);font-weight:800}
+.act-card.lead{grid-column:1/-1;border-color:rgba(249,168,37,0.35);background:rgba(249,168,37,0.06);display:flex;gap:16px;align-items:flex-start}
+.act-card.lead .act-ico{background:rgba(249,168,37,0.14);border-color:rgba(249,168,37,0.3);margin-bottom:0;flex-shrink:0}
+.act-card.lead .act-t{font-size:15px}
+.act-card.lead .act-d{font-size:13.5px;color:var(--ts);line-height:1.6;margin-top:4px}
+.grow-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px}
+.grow-row .from{font-family:'Outfit';font-size:26px;font-weight:900;color:var(--tm)}
+.grow-row .arr{color:var(--emerald);font-size:20px}
+@media(max-width:1000px){.dist{grid-template-columns:repeat(2,1fr)}}
+
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.act-card{border:1px solid var(--gb);border-radius:var(--rmd);background:linear-gradient(145deg,var(--glass),var(--glass-2));padding:18px;transition:all 0.2s}
+.act-card:hover{border-color:var(--gbh);transform:translateY(-2px)}
+.act-ico{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:12px;background:rgba(21,101,192,0.12);border:1px solid rgba(21,101,192,0.2)}
+.act-t{font-size:13.5px;font-weight:700;color:var(--tp);line-height:1.35}
+.matri-num{font-family:'Outfit';font-size:80px;font-weight:900;letter-spacing:-0.04em;background:linear-gradient(135deg,var(--uni-300),var(--emerald));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.split-big{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;padding:14px 0}
+.split-item{text-align:center}
+.split-item .v{font-family:'Outfit';font-size:56px;font-weight:900;letter-spacing:-0.04em;line-height:1}
+.split-item .l{color:var(--ts);font-size:13px;font-weight:600;margin-top:8px}
+.dist-row{display:grid;grid-template-columns:150px 1fr 50px;gap:12px;align-items:center;margin-bottom:8px}
+.dist-lbl{font-size:12.5px;color:var(--uni-200);font-weight:600;text-align:right}
+.dist-val{font-family:'Outfit';font-size:14px;font-weight:800;text-align:left}
+@media(max-width:1000px){.act-grid{grid-template-columns:1fr}}
+
+
+.mini-kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.split-big{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap;padding:12px 0}
+.split-item{text-align:center}
+.split-item .v{font-family:'Outfit';font-size:54px;font-weight:900;letter-spacing:-0.04em;line-height:1}
+.split-item .s{font-family:'Outfit';font-size:15px;font-weight:800;color:var(--ts);margin-top:6px}
+.split-item .l{color:var(--ts);font-size:13px;font-weight:600;margin-top:6px;line-height:1.35}
+.bar.amber{background:linear-gradient(90deg,#F9A825,#FFB74D)}
+.req-card{border:1px solid rgba(66,165,245,0.35);border-radius:var(--rlg);background:linear-gradient(145deg,rgba(21,101,192,0.16),rgba(0,201,167,0.05));padding:22px 24px}
+.req-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.req-ico{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(21,101,192,0.2);border:1px solid rgba(66,165,245,0.35)}
+.req-t{font-family:'Outfit';font-size:19px;font-weight:800}
+.req-s{color:var(--ts);font-size:13px;margin-top:2px}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat{border:1px solid var(--gb);border-radius:var(--rmd);background:rgba(255,255,255,0.04);padding:16px 18px;display:flex;align-items:center;gap:14px}
+.cat .num{font-family:'Outfit';font-size:34px;font-weight:900;color:var(--uni-300);min-width:52px;text-align:center}
+.cat .nm{font-size:15px;font-weight:700}
+.cat .ds{color:var(--ts);font-size:12.5px;margin-top:2px}
+.pending-box{border:1px dashed rgba(249,168,37,0.55);border-radius:var(--rlg);background:rgba(249,168,37,0.06);padding:26px;text-align:center;color:#FDE9C2;font-size:14px;line-height:1.6}
+@media(max-width:1000px){.mini-kpi-row,.cat-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="bg-gradient"></div>
+<div class="particles" id="particles"></div>
+<div class="shell">
+
+  <header class="hero">
+    <div class="hero-bar">
+      <img src="logo_veterinaria_uniandes.png" alt="Logo" class="hero-logo">
+      <div><div class="hero-brand-main">Medicina Veterinaria</div><div class="hero-brand-sub">Universidad Regional Autónoma de los Andes — UNIANDES</div></div>
+      <div class="hero-bar-right"><span class="live-dot"></span><span class="live-label">Junta de Facultad</span></div>
+    </div>
+    <div class="hero-body">
+      <div class="eyebrow"><span class="eyebrow-icon">📋</span>Informe de gestión de la dirección de carrera</div>
+      <h1>Indicadores de Fin de Periodo</h1>
+      <p class="subtitle">Repitencia, desaprobación por inasistencias, cronograma del examen complexivo y requerimientos docentes para el próximo periodo. Periodo Mayo – Septiembre 2026.</p>
+      <div class="hero-date">📅 Ambato, octubre de 2026</div>
+    </div>
+  </header>
+
+  <nav class="nav" id="nav"></nav>
+
+  <!-- SLIDE 1 -->
+  <section class="slide on" id="s1">
+    <div class="slide-head">
+      <div><div class="slide-title"><span class="slide-num">1</span>Indicadores de Fin de Periodo</div>
+      <p class="slide-note">Resultados consolidados al cierre, calculados por estudiante con la nota final del periodo.</p></div>
+      <span class="tag">Cierre Mayo – Sept. 2026</span>
+    </div>
+    <div class="grid g4" id="kpiRow" style="margin-bottom:14px"></div>
+
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="panel">
+        <div class="panel-title">👥 Número de estudiantes por nivel</div>
+        <div class="panel-sub">Distribución de la matrícula del periodo.</div>
+        <div class="bar-chart" id="estNivel"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">📈 Promedio por nivel</div>
+        <div class="panel-sub">Nota final promedio de cada nivel. Línea de referencia en 7,0.</div>
+        <div class="line-wrap" id="promNivel" style="height:270px"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">🔁 Repitencia por nivel</div>
+      <div class="panel-sub">Estudiantes que deberán volver a cursar al menos una asignatura, respecto al total de cada nivel.</div>
+      <div class="bar-chart" id="repNivel"></div>
+      <div class="note-box" style="display:block;margin-top:14px">💡 En Séptimo y Octavo la repitencia se concentra en las asignaturas del área quirúrgica y reproductiva. En la mayoría de casos de la carrera se trata de <strong>una sola asignatura</strong> pendiente.</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 -->
+  <section class="slide" id="s2">
+    <div class="slide-head">
+      <div><div class="slide-title"><span class="slide-num">2</span>Repitencia y Desaprobación</div>
+      <p class="slide-note">Detalle de los estudiantes que deberán repetir asignaturas y de las causas de desaprobación.</p></div>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="panel">
+        <div class="panel-title">🎓 Resultado del periodo</div>
+        <div class="panel-sub" id="resSub"></div>
+        <div class="split-big" id="resSplit"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">📌 Estudiantes que repiten</div>
+        <div class="panel-sub" id="repSub"></div>
+        <div class="split-big" id="repSplit"></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:14px">
+      <div class="panel-title">📚 Asignaturas con más repetidores</div>
+      <div class="panel-sub">Estudiantes que no aprobaron respecto a los cursantes de cada asignatura.</div>
+      <div class="bar-chart" id="asigRep"></div>
+    </div>
+
+    <div class="grid g2">
+      <div class="panel">
+        <div class="panel-title">🗓️ Desaprobación por inasistencias</div>
+        <div class="panel-sub">Asignaturas perdidas por exceder el límite de faltas.</div>
+        <div id="faltasBox"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">🔄 Tercera matrícula</div>
+        <div class="panel-sub">Estudiantes cursando una asignatura por tercera vez.</div>
+        <div id="terceraBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 -->
+  <section class="slide" id="s3">
+    <div class="slide-head">
+      <div><div class="slide-title"><span class="slide-num">3</span>Examen Complexivo</div>
+      <p class="slide-note">Cronograma de la primera cohorte en la modalidad de titulación por examen complexivo.</p></div>
+      <span class="tag gold">Octubre 2026</span>
+    </div>
+    <div id="complexBox"></div>
+  </section>
+
+  <!-- SLIDE 4 -->
+  <section class="slide" id="s4">
+    <div class="slide-head">
+      <div><div class="slide-title"><span class="slide-num">4</span>Requerimientos Docentes</div>
+      <p class="slide-note">Necesidades de personal académico para el próximo periodo.</p></div>
+      <span class="tag gold">Próximo periodo</span>
+    </div>
+    <div class="req-card" style="margin-bottom:14px">
+      <div class="req-head"><div class="req-ico">👩‍🏫</div><div><div class="req-t">Reposición de docente de medio tiempo</div><div class="req-s">Para garantizar la continuidad de dos cátedras de los primeros niveles.</div></div></div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">📋 Justificación</div>
+      <div class="panel-sub">Alcance del requerimiento.</div>
+      <div class="statrow"><div class="stat-ico blue">📚</div><div class="stat-body"><div class="stat-t">Cátedras de formación básica</div><div class="stat-d">Metodología de la Investigación y Bioquímica pertenecen a los primeros niveles de la malla y requieren cobertura desde el inicio de clases.</div></div></div>
+      <div class="statrow"><div class="stat-ico green">🗓️</div><div class="stat-body"><div class="stat-t">Planificación oportuna</div><div class="stat-d">Contar con la reposición antes del inicio del periodo permite la entrega de sílabos y la planificación de la cátedra a tiempo.</div></div></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button class="ctrl-btn" id="prevBtn">‹ Anterior</button>
+    <span class="ctrl-ind" id="slideInd"></span>
+    <div style="display:flex;gap:10px">
+      <button class="ctrl-btn print-btn" onclick="window.print()">🖨 Imprimir / PDF</button>
+      <button class="ctrl-btn" id="nextBtn">Siguiente ›</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <img src="logo_veterinaria_uniandes.png" alt="" class="footer-logo">
+    <span>Informe de gestión · Medicina Veterinaria · UNIANDES · Mayo – Septiembre 2026</span>
+  </footer>
+
+</div>
+<script>
+const DATA = {"kpis": {"estudiantes": 209, "asignaturas": 46, "promedio": 7.86, "repitencia": 60, "aprobaronTodo": 149, "inasistencia": 2, "rep1": 34, "repVarias": 26, "tercera": 3, "terceraAprob": 3, "becados": 53, "noAprobRegistros": 110, "noAprobFaltasReg": 2}, "niveles": [{"nivel": "PRIMER", "n": 19, "prom": 7.99, "rep": 2, "bajo7": 2}, {"nivel": "SEGUNDO", "n": 37, "prom": 7.66, "rep": 9, "bajo7": 7}, {"nivel": "TERCERO", "n": 30, "prom": 7.39, "rep": 12, "bajo7": 7}, {"nivel": "CUARTO", "n": 18, "prom": 8.23, "rep": 3, "bajo7": 1}, {"nivel": "QUINTO", "n": 18, "prom": 8.06, "rep": 1, "bajo7": 1}, {"nivel": "SEXTO", "n": 20, "prom": 7.81, "rep": 7, "bajo7": 4}, {"nivel": "SÉPTIMO", "n": 23, "prom": 7.21, "rep": 15, "bajo7": 6}, {"nivel": "OCTAVO", "n": 19, "prom": 7.68, "rep": 10, "bajo7": 4}, {"nivel": "NOVENO", "n": 25, "prom": 8.96, "rep": 1, "bajo7": 0}], "asigRep": [{"asignatura": "Fisiología Sistémica Veterinaria", "nivel": "TERCERO", "rep": 10, "n": 28, "prom": 6.58}, {"asignatura": "Cirugía de Animales de Compañía", "nivel": "OCTAVO", "rep": 9, "n": 17, "prom": 6.32}, {"asignatura": "Técnica Quirúrgica General", "nivel": "SÉPTIMO", "rep": 8, "n": 21, "prom": 6.55}, {"asignatura": "Tecnología y Reproducción Animal", "nivel": "SÉPTIMO", "rep": 8, "n": 25, "prom": 6.67}, {"asignatura": "Fisiología", "nivel": "SEGUNDO", "rep": 8, "n": 36, "prom": 7.21}, {"asignatura": "Patología Veterinaria", "nivel": "SEXTO", "rep": 6, "n": 18, "prom": 7.54}, {"asignatura": "Anestesiología", "nivel": "SEXTO", "rep": 6, "n": 20, "prom": 7.41}, {"asignatura": "Estadística", "nivel": "TERCERO", "rep": 5, "n": 21, "prom": 7.17}, {"asignatura": "Bioquímica", "nivel": "SEGUNDO", "rep": 5, "n": 43, "prom": 7.4}, {"asignatura": "Anatomía Comparada", "nivel": "SEGUNDO", "rep": 4, "n": 38, "prom": 7.62}], "asigRepTotal": 33, "faltas": [{"nivel": "SÉPTIMO", "asignatura": "TÉCNICA QUIRÚRGICA GENERAL"}, {"nivel": "OCTAVO", "asignatura": "CIRUGÍA DE ANIMALES DE COMPAÑÍA"}], "catedras": [{"asignatura": "Metodología de la Investigación", "nivel": "I", "estudiantes": 19}, {"asignatura": "Bioquímica", "nivel": "II", "estudiantes": 43}], "complexivo": null};
+
+const SLIDES=[{id:'s1',label:'Indicadores'},{id:'s2',label:'Repitencia'},{id:'s3',label:'Complexivo'},{id:'s4',label:'Docentes'}];
+let cur=0;
+const fD=new Intl.NumberFormat('es-EC',{minimumFractionDigits:2,maximumFractionDigits:2});
+const P=(a,b)=>b?Math.round(a/b*100):0;
+const XY=(a,b)=>`${a} de ${b} (${P(a,b)}%)`;
+const R={'PRIMER':'I','SEGUNDO':'II','TERCERO':'III','CUARTO':'IV','QUINTO':'V','SEXTO':'VI','SÉPTIMO':'VII','OCTAVO':'VIII','NOVENO':'IX'};
+const rom=s=>R[s]||s;
+const nav=document.getElementById('nav');
+nav.innerHTML=SLIDES.map((s,i)=>`<button class="nav-btn${i===0?' on':''}" data-i="${i}"><span class="n">${i+1}</span>${s.label}</button>`).join('');
+function goTo(i){cur=Math.max(0,Math.min(SLIDES.length-1,i));
+  SLIDES.forEach((s,idx)=>document.getElementById(s.id).classList.toggle('on',idx===cur));
+  document.querySelectorAll('.nav-btn').forEach((b,idx)=>b.classList.toggle('on',idx===cur));
+  document.getElementById('prevBtn').disabled=cur===0;document.getElementById('nextBtn').disabled=cur===SLIDES.length-1;
+  document.getElementById('slideInd').textContent=`${cur+1} / ${SLIDES.length} · ${SLIDES[cur].label}`;
+  window.scrollTo({top:0,behavior:'smooth'});}
+nav.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>goTo(+b.dataset.i)));
+document.getElementById('prevBtn').addEventListener('click',()=>goTo(cur-1));
+document.getElementById('nextBtn').addEventListener('click',()=>goTo(cur+1));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goTo(cur+1);if(e.key==='ArrowLeft')goTo(cur-1);});
+
+const k=DATA.kpis, NV=DATA.niveles;
+document.getElementById('kpiRow').innerHTML=`
+  <div class="kpi hl"><div class="k-ic">👥</div><div class="k-lbl">Estudiantes</div><div class="k-val">${k.estudiantes}</div><div class="k-sub">${k.asignaturas} asignaturas · 9 niveles</div></div>
+  <div class="kpi hl"><div class="k-ic">📊</div><div class="k-lbl">Promedio general</div><div class="k-val">${fD.format(k.promedio)}</div><div class="k-sub">Nota final sobre 10.</div></div>
+  <div class="kpi"><div class="k-ic">🔁</div><div class="k-lbl">Repitencia</div><div class="k-val" style="color:var(--gold-l)">${k.repitencia}</div><div class="k-sub">${XY(k.repitencia,k.estudiantes)} estudiantes</div></div>
+  <div class="kpi"><div class="k-ic">🗓️</div><div class="k-lbl">Desaprobación por inasistencias</div><div class="k-val">${k.inasistencia}</div><div class="k-sub">${XY(k.inasistencia,k.estudiantes)} estudiantes</div></div>`;
+
+const maxE=Math.max(...NV.map(n=>n.n));
+document.getElementById('estNivel').innerHTML=NV.map((n,i)=>`<div class="bar-row"><div class="bar-lbl">${rom(n.nivel)}</div><div class="track"><div class="bar" style="width:${Math.max(n.n/maxE*100,3)}%;animation-delay:${i*0.05}s"></div></div><div class="bar-val">${n.n}</div></div>`).join('');
+
+(function(){
+  const W=520,H=270,pl=34,pr=12,pt=26,pb=34,x0=pl,x1=W-pr,y0=H-pb,y1=pt,mn=6,mx=10,n=NV.length,bw=(x1-x0)/n*0.6;
+  const X=i=>x0+(x1-x0)*((i+0.5)/n),Y=v=>y0-((v-mn)/(mx-mn))*(y0-y1);
+  let s=[6,7,8,9,10].map(v=>`<line x1="${x0}" y1="${Y(v)}" x2="${x1}" y2="${Y(v)}" stroke="rgba(255,255,255,0.07)"/><text x="6" y="${Y(v)+4}" class="axis-text">${v}</text>`).join('');
+  s+=`<line x1="${x0}" y1="${Y(7)}" x2="${x1}" y2="${Y(7)}" stroke="rgba(255,107,138,0.35)" stroke-dasharray="5 4"/>`;
+  s+=NV.map((d,i)=>{const c=d.prom<7.5?'#F9A825':'#42A5F5';return `<rect x="${X(i)-bw/2}" y="${Y(d.prom)}" width="${bw}" height="${y0-Y(d.prom)}" rx="4" fill="${c}" opacity="0.88"/><text x="${X(i)}" y="${Y(d.prom)-6}" text-anchor="middle" fill="#eaf2ff" font-size="10.5" font-weight="800">${fD.format(d.prom)}</text><text x="${X(i)}" y="${H-10}" text-anchor="middle" class="axis-text">${rom(d.nivel)}</text>`;}).join('');
+  document.getElementById('promNivel').innerHTML=`<svg viewBox="0 0 ${W} ${H}">${s}</svg>`;
+})();
+
+const maxR=Math.max(...NV.map(n=>n.rep),1);
+document.getElementById('repNivel').innerHTML=NV.map((n,i)=>`<div class="bar-row" style="grid-template-columns:64px 1fr 150px"><div class="bar-lbl">${rom(n.nivel)}</div><div class="track"><div class="bar amber" style="width:${Math.max(n.rep/maxR*100,2)}%;animation-delay:${i*0.05}s"></div></div><div class="bar-val">${XY(n.rep,n.n)}</div></div>`).join('');
+
+document.getElementById('resSub').textContent=`De los ${k.estudiantes} estudiantes de la carrera.`;
+document.getElementById('resSplit').innerHTML=`
+  <div class="split-item"><div class="v" style="color:#7DD9A8">${k.aprobaronTodo}</div><div class="s">${XY(k.aprobaronTodo,k.estudiantes)}</div><div class="l">aprobaron todas<br>sus asignaturas</div></div>
+  <div class="split-item"><div class="v" style="color:var(--gold-l)">${k.repitencia}</div><div class="s">${XY(k.repitencia,k.estudiantes)}</div><div class="l">repetirán al menos<br>una asignatura</div></div>`;
+document.getElementById('repSub').textContent=`De los ${k.repitencia} estudiantes que repiten.`;
+document.getElementById('repSplit').innerHTML=`
+  <div class="split-item"><div class="v" style="color:var(--uni-300)">${k.rep1}</div><div class="s">${XY(k.rep1,k.repitencia)}</div><div class="l">repiten<br>una sola asignatura</div></div>
+  <div class="split-item"><div class="v" style="color:var(--gold-l)">${k.repVarias}</div><div class="s">${XY(k.repVarias,k.repitencia)}</div><div class="l">repiten<br>dos o más</div></div>`;
+
+const A=DATA.asigRep, maxA=Math.max(...A.map(a=>a.rep),1);
+document.getElementById('asigRep').innerHTML=A.map((a,i)=>`<div class="bar-row" style="grid-template-columns:270px 1fr 140px"><div class="bar-lbl" style="text-align:left;font-size:12.5px">${a.asignatura} <span style="color:var(--tm)">· ${rom(a.nivel)}</span></div><div class="track"><div class="bar amber" style="width:${Math.max(a.rep/maxA*100,3)}%;animation-delay:${i*0.05}s"></div></div><div class="bar-val">${XY(a.rep,a.n)}</div></div>`).join('');
+
+const cap=s=>s.charAt(0)+s.slice(1).toLowerCase();
+document.getElementById('faltasBox').innerHTML=`
+  <div class="split-big" style="padding:4px 0 10px"><div class="split-item"><div class="v" style="color:var(--uni-300)">${k.inasistencia}</div><div class="s">${XY(k.inasistencia,k.estudiantes)}</div><div class="l">estudiantes de la carrera</div></div></div>
+  ${DATA.faltas.map(f=>`<div class="statrow"><div class="stat-ico blue">📄</div><div class="stat-body"><div class="stat-t">${cap(f.asignatura)}</div><div class="stat-d">Nivel ${rom(f.nivel)} · un estudiante.</div></div></div>`).join('')}
+  <div class="note-box" style="display:block;margin-top:10px">La desaprobación por inasistencias es marginal: <strong>${k.inasistencia} de ${k.repitencia}</strong> casos de repitencia.</div>`;
+document.getElementById('terceraBox').innerHTML=`
+  <div class="split-big" style="padding:4px 0 10px"><div class="split-item"><div class="v" style="color:#7DD9A8">${k.tercera}</div><div class="s">${XY(k.terceraAprob,k.tercera)} aprobaron</div><div class="l">estudiantes en tercera matrícula</div></div></div>
+  <div class="statrow" style="border-color:rgba(0,201,167,0.25);background:rgba(0,201,167,0.06)"><div class="stat-ico green">✅</div><div class="stat-body"><div class="stat-t">Todos aprobaron</div><div class="stat-d">Los ${k.tercera} estudiantes que cursaban asignaturas en tercera matrícula las aprobaron en este periodo.</div></div></div>`;
+
+document.getElementById('complexBox').innerHTML=`
+  <div class="note-box" style="display:block;margin:0 0 14px">🎓 La <strong>primera cohorte</strong> de estudiantes de la carrera rendirá el examen complexivo en las siguientes fechas.</div>
+  <div class="grid g2" style="margin-bottom:14px">
+    <div class="req-card"><div class="req-head"><div class="req-ico">✍️</div><div><div class="req-t">Componente teórico</div><div class="req-s">Examen escrito · 6 puntos</div></div></div>
+      <div style="font-family:Outfit;font-size:40px;font-weight:900;color:#7DD9A8;letter-spacing:-0.03em">15 de octubre</div>
+      <div style="color:var(--ts);font-size:13px;margin-top:4px">Fecha prevista.</div></div>
+    <div class="req-card" style="border-color:rgba(249,168,37,0.4);background:linear-gradient(145deg,rgba(249,168,37,0.12),rgba(21,101,192,0.06))"><div class="req-head"><div class="req-ico" style="background:rgba(249,168,37,0.18);border-color:rgba(249,168,37,0.4)">🩺</div><div><div class="req-t">Componente práctico</div><div class="req-s">ECOE-Vet · 4 puntos</div></div></div>
+      <div style="font-family:Outfit;font-size:40px;font-weight:900;color:var(--gold-l);letter-spacing:-0.03em">19 al 22 de octubre</div>
+      <div style="color:var(--ts);font-size:13px;margin-top:4px">Fecha prevista.</div></div>
+  </div>
+  <div class="panel"><div class="panel-title">📌 Condición de aprobación</div><div class="panel-sub">Recordatorio de la regla establecida.</div>
+    <div class="statrow"><div class="stat-ico blue">✅</div><div class="stat-body"><div class="stat-t">7,00 / 10 cumpliendo los mínimos de cada componente</div><div class="stat-d">Teórico mínimo 3,00 / 6 para habilitar el práctico; práctico mínimo 2,00 / 4 y sin falla crítica.</div></div></div></div>`;
+
+document.getElementById('catGrid').innerHTML=DATA.catedras.map(c=>`<div class="cat"><div class="req-ico" style="width:40px;height:40px;font-size:18px">📘</div><div><div class="nm">${c.asignatura}</div><div class="ds">Nivel ${c.nivel}</div></div></div>`).join('');
+
+(function(){const c=document.getElementById('particles');if(!c)return;
+  for(let i=0;i<18;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*5+2;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*18+16}s;animation-delay:${-Math.random()*20}s`;c.appendChild(p);}})();
+goTo(0);
+
+</script>
+</body>
+</html>
